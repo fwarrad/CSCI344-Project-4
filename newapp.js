@@ -81,5 +81,4 @@ app.get("/happyWords.json", function (req, res) {
 app.get("/sadWords.json", function (req, res) {
     res.json(sadWords);
 });
-
     

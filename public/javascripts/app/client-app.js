@@ -24,7 +24,6 @@ var main = function () {
     $.getJSON("/sadWords.json", function (element) {
         $(".sadWords").append('<p> sad words:' + " " + element);
     });
-    
     function counter (words, cat, catCount) {
         var count;
         for(var i = 0; i < words.length; i++) {
@@ -35,10 +34,6 @@ var main = function () {
         }// end of for
         console.log("Total count " +catCount);
     return catCount;
-    }// end of counter
-    
-  
-
-    
+    }// end of counter    
 };
 $(document).ready(main);
