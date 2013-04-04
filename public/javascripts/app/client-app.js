@@ -4,8 +4,6 @@ var main = function () {
         trackedList = [],
         happyCount = 0,
         sadCount = 0,
-        sgage,
-        hgage,
         counter;
     // get counts for each word and category totals
     $.getJSON("/counts.json", function (element) {
