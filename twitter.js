@@ -15,12 +15,20 @@ var worker = function(trackedWords) {
       { track: trackedWords},
       function(stream) {
           stream.on('data', function(tweet) {
+            for (var i= 0; i < trackedWords.length; i++) {
+                if(tweet.text.indexOf(trackedWords[i]) > - 1) {
+                    // adds the value to a word
+                    client.incr(trackedWords[i]);
+                    console.log(trackedWords[i]);
+                }// end of matching test
+            }
+            
             // For each word, word will be incrimented.
-            trackedWords.forEach(function (trackedWords){
+            /*trackedWords.forEach(function (trackedWords){
               if(tweet.text.match(trackedWords)) {
                   client.incr(trackedWords);
               }
-            });
+            }); */
           });
       }
   );

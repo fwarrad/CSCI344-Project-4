@@ -6,8 +6,16 @@ var express = require("express"),
     redisClient = require("redis").createClient(),
     twitterWorker = require("./twitter.js"),
     app = express();
-    
-trackedWords = ["awesome", "cool", "rad", "gnarly", "banana", "sweet"];
+
+// start ntwitter and tracked words
+// these are the only lines you should have to change for either sad or happy words
+var happyWords = ["easier","interesting","honest","pal","warmth","rest","safe"];
+var sadWords = ["anguished","tormented","heartbroken","bitter","tearfu","grieving","ignorant","sad"];
+var trackedWords = happyWords.concat(sadWords);
+console.log(trackedWords);
+for(var i = 0; i< trackedWords.length; i++) {    redisClient.set(trackedWords[i], 0)   }
+// start twitter    
+//trackedWords = ["awesome", "cool", "rad", "gnarly", "banana", "sweet"];
 
 // This is our basic configuration                                                                                                                     
 app.configure(function () {
@@ -58,4 +66,11 @@ app.get("/counts.json", function	(req, res) {
             res.json(result);
         }
     });
+});
+
+app.get("/happyWords.json", function (req, res) {
+    res.json(happyWords);
+});// list the sad words as json object
+app.get("/sadWords.json", function (req, res) {
+    res.json(sadWords);
 });
