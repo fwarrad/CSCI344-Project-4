@@ -11,38 +11,20 @@ var main = function () {
     $.getJSON("/counts.json", function (element) {
         $.getJSON("/happyWords.json", function (happyWords) {
             happyCount = counter(element,happyWords,happyCount);
-        }).done(function () {
-                $(".counts").append("<p>Total Happy Counts: "+ happyCount + "</p>");
-                    hgage = new JustGage({
-                    id: "happyGauge",
-                    value: happyCount,
-                    min: 0,
-                    max: 1000000,
-                    title: "happy meter",
-                    label: "happy words"
-                });
-            });
+            $(".counts").append("<p>Total Happy Counts: " + " " + happyCount + "</p>");
+        })
         $.getJSON("/sadWords.json", function (sadWords) {
            sadCount = counter(element,sadWords,sadCount);
-        }).done(function () {
-                $(".counts").append("<p>Total Sad count: " + sadCount  +"</p>");
-                   sgage = new JustGage({
-                   id: "sadGauge",
-                   value: sadCount,
-                   min: 0,
-                   max: 1000000,
-                   title: "sad meter",
-                   label: "sad words"
-                });
-            });
+          $(".counts").append("<p>Total Sad Counts: " + " " + sadCount  +"</p>");
+        })
     });
     // get list of happy words
     $.getJSON("/happyWords.json", function (element) {
-        $(".Swords").append('<p>happy words:' + element);
+        $(".happyWords").append('<p>happy words:' + " " + element);
     });
     // get list of sad words
     $.getJSON("/sadWords.json", function (element) {
-        $(".Hwords").append('<p> sad words:' + element);
+        $(".sadWords").append('<p> sad words:' + " " + element);
     });
     
     function counter (words, cat, catCount) {

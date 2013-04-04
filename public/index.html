@@ -1,10 +1,46 @@
 <!DOCTYPE html>
+  
 <html>
+  
   <head>
+    <title>SentaTweet -- Get Sentimental! </title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="stylesheets/app/app.css"/>
+    <link rel="stylesheet" href="stylesheets/lib/reset.css"/>
+ 
   </head>
-
+  
   <body>
+    <div id="content" class='content'>
+      <div class="twitterContainer">
+        <div class ="heading">
+            <h1>Welcome to SentaTweet</h1>
+            <h2>Where Twitter gets Sentamental!</h2>
+        </div> <!--end of heading-->
+        <div class = "happyWords">
+          <p></p>
+        </div>
+        <div class = "sadWords">
+          <p></p>
+        </div>        
+        <div class = "counts">
+          <p></p>
+        </div>
+          <button id="reset" onclick="history.go(0)">refresh</button>
+        <div id="sadGauge" class= "lguage"></div>
+        <div id ="happyGauge" class ="rguage"></div> <!--end of content-->
+    </div>
+    
+    <!--le java scripts -->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="/javascripts/client-app.js"></script>
-  </body>
+    <script src="/javaScripts/app/client-app.js"></script>
+    <script src="javascripts/lib/jquery.backstretch.min.js"></script>
+    <script src="javascripts/lib/jquery-ui.min.js"></script>
+    
+    <script>
+      // To attach Backstrech as the body's backgroun
+      $.backstretch("images/bird_image_one.jpg");
+    </script>
+  </body>  
+  
 </html>
