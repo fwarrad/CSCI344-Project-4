@@ -1,7 +1,3 @@
-var $ = window.$;
-var ctwitter = window.ctwitter; 
-var console = window.console; 
-"use strict";
 // create list of modules required
 var express = require("express"),
     http = require("http"),
