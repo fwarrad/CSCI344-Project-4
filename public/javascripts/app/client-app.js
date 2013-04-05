@@ -1,4 +1,8 @@
+var $ = window.$;
+var ctwitter = window.ctwitter; 
+var console = window.console; 
 var main = function () {
+    "use strict";
     var sadlist = [],
         happyList = [],
         trackedList = [],
@@ -8,13 +12,13 @@ var main = function () {
     // get counts for each word and category totals
     $.getJSON("/counts.json", function (element) {
         $.getJSON("/happyWords.json", function (happyWords) {
-            happyCount = counter(element,happyWords,happyCount);
+            happyCount = counter(element, happyWords, happyCount);
             $(".counts").append("<p>Total Happy Counts: " + " " + happyCount + "</p>");
-        })
+        });
         $.getJSON("/sadWords.json", function (sadWords) {
-           sadCount = counter(element,sadWords,sadCount);
-          $(".counts").append("<p>Total Sad Counts: " + " " + sadCount  +"</p>");
-        })
+            sadCount = counter(element, sadWords, sadCount);
+            $(".counts").append("<p>Total Sad Counts: " + " " + sadCount  + "</p>");
+        });
     });
     // get list of happy words
     $.getJSON("/happyWords.json", function (element) {
@@ -24,9 +28,9 @@ var main = function () {
     $.getJSON("/sadWords.json", function (element) {
         $(".sadWords").append('<p> sad words:' + " " + element);
     });
-    function counter (words, cat, catCount) {
+    function counter(words, cat, catCount) {
         var count;
-        for(var i = 0; i < words.length; i++) {
+        for (var i = 0; i < words.length; i++) {
            if (cat.indexOf(words[i].key) > -1) {
                 console.log(words[i].key,words[i].count);
                 catCount = catCount + Number(words[i].count);

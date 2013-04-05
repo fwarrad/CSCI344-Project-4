@@ -1,4 +1,7 @@
-
+var $ = window.$;
+var ctwitter = window.ctwitter; 
+var console = window.console; 
+"use strict";
 // create list of modules required
 var express = require("express"),
     http = require("http"),
@@ -7,7 +10,6 @@ var express = require("express"),
     credentials = require("./credentials.js"),
     redisClient = require("redis").createClient(),
     app = express();
-    
 //This app combines the previous twitter.js and app.js files into one app. 
 
 //twitter.js portion of the app starts here:       
@@ -20,11 +22,11 @@ var t = new twitter({
 });
 // start ntwitter and tracked words
 // these are the only lines you should have to change for either sad or happy words
-var happyWords = ["easier","interesting","honest","pal","warmth","rest","safe"];
-var sadWords = ["anguished","tormented","heartbroken","bitter","tearful","grieving","ignorant","sad"];
+var happyWords = ["easier", "interesting", "honest", "pal", "warmth", "rest", "safe"];
+var sadWords = ["anguished", "tormented", "heartbroken", "bitter", "tearful", "grieving", "ignorant", "sad"];
 var trackedWords = happyWords.concat(sadWords);
 console.log(trackedWords);
-for(var i = 0; i< trackedWords.length; i++) {    redisClient.set(trackedWords[i], 0)   }
+for (var i = 0; i< trackedWords.length; i++) {  redisClient.set(trackedWords[i], 0)   }
 // start twitter
 t.stream(
     "statuses/filter",
